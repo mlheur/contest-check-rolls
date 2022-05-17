@@ -124,7 +124,7 @@ function showWinner()
     CCR.dbg("++CCR:showWinner()")
 
     sMsg = CCR.hWnd["ccr_contestname"].getValue()
-    if sMsg == "" then sMsg = "Contest"
+    if sMsg == "" then sMsg = "Contest" end
     sMsg = sMsg.." "
     
     if CCR.results["defender"] >= CCR.results["aggressor"] then
