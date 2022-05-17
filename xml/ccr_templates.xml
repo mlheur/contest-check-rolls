@@ -1,0 +1,20 @@
+<root>
+    
+    <template name="ccr_contestant_frame">
+        <genericcontrol>
+			<frame name="groupbox" offset="5,5,5,5" />
+            <anchored>
+                <top offset="40" />
+                <size width="200" height="145" />
+            </anchored>
+        </genericcontrol>
+    </template>
+
+    <template name="ccr_sw_contestant">
+        <subwindow>
+            <script file="scripts/ccrContestantMgr.lua" />
+            <class>ccr_contestant</class>
+        </subwindow>
+    </template>
+
+</root>

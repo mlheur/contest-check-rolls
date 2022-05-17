@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?><root version="3.3" release="1.0">
+	<announcement text="Contest Check Rolls (C) 2022 mlheur@gmail.com" font="emotefont" icon="CCR_icon" />
+	<properties>
+		<name>contest-check-rolls</name>
+		<version>1.0.0</version>
+		<author>mlheur</author>
+		<description>Run contest checks.</description>
+		<ruleset><name>5E</name></ruleset>
+		<loadorder>126</loadorder>
+	</properties>
+	<base>
+		<!-- Scripts -->
+		<script name="CCR" file="scripts/CCR.lua" />
+		<!-- Resources -->
+		<string name="CCR_title">Contest Check Rolls</string>
+		<icon name="CCR_icon" file="images/CCR_icon.png" />
+		<icon name="CCR_button_up" file="images/CCR_button_up.png" />
+		<icon name="CCR_button_dn" file="images/CCR_button_dn.png" />
+		<icon name="CCR_empty_token" file="images/ccr_empty_token.png" />
+		<!-- Window Data -->
+		<includefile source="xml/ccr_wndclass.xml" />
+		<includefile source="xml/ccr_templates.xml" />
+	</base>
+</root></xml>
