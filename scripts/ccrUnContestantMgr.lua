@@ -8,19 +8,11 @@ function onInit()
     end
 end
 
-function goContested(noderef)
-    window["ccr_defender"].setValue("ccr_contestant",noderef)
-    window["ccr_uncontested"].setValue(0)
-    return true
-end
-
 function onDrop(x,y,dd)
-    ddtype = dd.getType()
-    CCR.dbg("++ccrUnContestantMgr:onDrop(x=["..x.."],y=["..y.."],dd.getType()=["..ddtype.."])")
-    bHandled = false
-    if (ddtype == "combattrackerentry") then
-        bHandled = goContested(dd.getCustomData())
-    end
-    CCR.dbg("--ccrUnContestantMgr:onDrop()")
-    return(bHandled)
+    CCR.dbg("+-ccrUnContestantMgr:onDrop()")
+    if dd.getType() ~= "combattrackerentry" then return false end
+    window["ccr_defender"].setValue("ccr_contestant",dd.getCustomData())
+    window["ccr_uncontested"].setValue(0)
+    bHandled = true
+    return true
 end
