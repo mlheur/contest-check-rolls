@@ -93,6 +93,12 @@
 				<script>function onButtonPress() window["ccr_uncontested"].toggle() end</script>
             </button_text>
 
+            <!-- contest name -->
+            <string_power name="ccr_contestname">
+                <anchored to="ccr_aggressor_frame" position="aboveleft" offset="3,7" height="20" width="194" />
+                <empty text="Contest" />
+            </string_power>
+
         </sheetdata>
     </windowclass>
 

@@ -38,7 +38,7 @@ function mkRoll(swNode,sRole)
 	r["aDice"]   = { "d20" } -- lookup? put a d20 in the XML?
 	r["nMod"]    = swNode.subwindow["ccr_adjust"].getValue()
 	r["sType"]   = "CCR" -- must match ActionsManager.registerResultHandler("CCR", ...) for our callback to be called
-	r["sDesc"]   = "" -- draginfo.getStringData(), will be set after draginfo is set by ActionSkill.perform*Rolld
+	r["sDesc"]   = swNode.subwindow["ccr_skillability"].getValue()
 	r["bSecret"] = false -- these are immersive, never show the players.
 	r["sRole"] = sRole -- this gets passed on blindly to our onRoll function
 	CCR.dbg("--CCR:mkRoll()")    
@@ -124,21 +124,17 @@ end
 function showWinner()
     CCR.dbg("++CCR:showWinner()")
 
-    sMsg =       "*********************\n"
-    sMsg = sMsg.."** Contest Results\n"
-    sMsg = sMsg.."*********************\n"
+    sMsg = CCR.hWnd["ccr_contestname"].getValue() or "Contest"
+    sMsg = sMsg.." "
 
-    if Uncontested() then
-        sMsg = sMsg.." Challenger: "..CCR.hWnd["ccr_aggressor"].subwindow["name"].getValue() .. "\n"
-        sMsg = sMsg.." * Score: "..CCR.results["defender"] .. "\n"
-        sMsg = sMsg.." Uncontested Difficulty:\n"
-        sMsg = sMsg.." * Score: "..CCR.results["aggressor"] .. "\n"
-    else
-        sMsg = sMsg.." Aggressor: "..CCR.hWnd["ccr_aggressor"].subwindow["name"].getValue() .. "\n"
-        sMsg = sMsg.." * Score: "..CCR.results["aggressor"] .. "\n"
-        sMsg = sMsg.." Defender: "..CCR.hWnd["ccr_defender"].subwindow["name"].getValue() .. "\n"
-        sMsg = sMsg.." * Score: "..CCR.results["defender"] .. "\n"
-    end
+--    if Uncontested() then
+--        sMsg = sMsg..CCR.hWnd["ccr_aggressor"].subwindow["name"].getValue().." "..CCR.hWnd["ccr_aggressor"].subwindow["ccr_skillability"].getValue().." Result: "..CCR.results["defender"] .. "\n"
+--        sMsg = sMsg.."Uncontested DC: "..CCR.results["aggressor"] .. "\n"
+--    else
+--        sMsg = sMsg..CCR.hWnd["ccr_aggressor"].subwindow["name"].getValue().." "..CCR.hWnd["ccr_aggressor"].subwindow["ccr_skillability"].getValue().." Result: "..CCR.results["aggressor"] .. "\n"
+--        sMsg = sMsg..CCR.hWnd["ccr_defender"].subwindow["name"].getValue().." "..CCR.hWnd["ccr_defender"].subwindow["ccr_skillability"].getValue().." Result: "..CCR.results["defender"] .. "\n"
+--    end
+--    sMsg = sMsg.."\n"
 
     if CCR.results["defender"] >= CCR.results["aggressor"] then
         sMsg = sMsg .. "Winner: "

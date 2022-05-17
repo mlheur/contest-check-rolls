@@ -20,6 +20,12 @@ function onInit()
     else
         setVisible(true)
     end
+
+    noderef = DB.getChild("CCR",myName.."_noderef")
+    if noderef ~= nil then
+        setValue("ccr_contestant",noderef.getValue())
+    end
+
     CCR.dbg("--ccrContestantMgr:onInit()")
 end
 

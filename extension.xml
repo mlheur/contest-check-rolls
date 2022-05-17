@@ -2,7 +2,7 @@
 	<announcement text="Contest Check Rolls (C) 2022 mlheur@gmail.com" font="emotefont" icon="CCR_icon" />
 	<properties>
 		<name>contest-check-rolls</name>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<author>mlheur</author>
 		<description>Run contest checks.</description>
 		<ruleset><name>5E</name></ruleset>
