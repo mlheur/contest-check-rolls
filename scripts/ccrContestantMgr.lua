@@ -58,11 +58,6 @@ function onDrop(x,y,dd)
         if (ddtype == "combattrackerentry") then
             setValue(sclass,dd.getCustomData())
             bHandled = true
-        elseif (ddtype == "shortcut") then
-            nclass,nvalue = dd.getShortcutData()
-            CCR.dbg("  nclass=["..nclass.."], nvalue=["..nvalue.."]")
-            setValue(sclass,nvalue)
-            bHandled = true
         end
     end
     sclass,srecord = getValue()
