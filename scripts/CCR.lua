@@ -40,7 +40,7 @@ function mkRoll(swNode,sRole)
 	r["sType"]   = "CCR" -- must match ActionsManager.registerResultHandler("CCR", ...) for our callback to be called
 	r["sDesc"]   = swNode.subwindow["ccr_skillability"].getValue()
 	r["bSecret"] = false -- these are immersive, never show the players.
-	r["sRole"] = sRole -- this gets passed on blindly to our onRoll function
+	r["sRole"]   = sRole -- this gets passed on blindly to our onRoll function
 	CCR.dbg("--CCR:mkRoll()")    
 	return r
 end
@@ -82,7 +82,6 @@ function rollActor(swNode,sRole)
     rRoll = mkRoll(swNode,sRole)
     doAdvDis(swNode,rRoll)
     rThrow = ActionsManager.buildThrow(rActor, {}, rRoll, false)
-    rThrow.bSecret = false
 	Comm.throwDice(rThrow)
 
     CCR.dbg("--CCR:rollActor()")
@@ -124,18 +123,10 @@ end
 function showWinner()
     CCR.dbg("++CCR:showWinner()")
 
-    sMsg = CCR.hWnd["ccr_contestname"].getValue() or "Contest"
+    sMsg = CCR.hWnd["ccr_contestname"].getValue()
+    if sMsg == "" then sMsg = "Contest"
     sMsg = sMsg.." "
-
---    if Uncontested() then
---        sMsg = sMsg..CCR.hWnd["ccr_aggressor"].subwindow["name"].getValue().." "..CCR.hWnd["ccr_aggressor"].subwindow["ccr_skillability"].getValue().." Result: "..CCR.results["defender"] .. "\n"
---        sMsg = sMsg.."Uncontested DC: "..CCR.results["aggressor"] .. "\n"
---    else
---        sMsg = sMsg..CCR.hWnd["ccr_aggressor"].subwindow["name"].getValue().." "..CCR.hWnd["ccr_aggressor"].subwindow["ccr_skillability"].getValue().." Result: "..CCR.results["aggressor"] .. "\n"
---        sMsg = sMsg..CCR.hWnd["ccr_defender"].subwindow["name"].getValue().." "..CCR.hWnd["ccr_defender"].subwindow["ccr_skillability"].getValue().." Result: "..CCR.results["defender"] .. "\n"
---    end
---    sMsg = sMsg.."\n"
-
+    
     if CCR.results["defender"] >= CCR.results["aggressor"] then
         sMsg = sMsg .. "Winner: "
         if Uncontested() then
