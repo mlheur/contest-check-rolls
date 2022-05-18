@@ -16,7 +16,6 @@
 		<icon name="CCR_icon" file="images/CCR_icon.png" />
 		<icon name="CCR_button_up" file="images/CCR_button_up.png" />
 		<icon name="CCR_button_dn" file="images/CCR_button_dn.png" />
-		<icon name="CCR_empty_token" file="images/ccr_empty_token.png" />
 		<!-- Window Data -->
 		<includefile source="xml/ccr_wndclass.xml" />
 		<includefile source="xml/ccr_templates.xml" />

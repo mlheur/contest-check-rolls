@@ -147,7 +147,18 @@
                 <anchored to="name" position="below" >
                     <bottom parent="ccr_skillability" anchor="top" offset="-5" />
                 </anchored>
-                <empty>CCR_empty_token</empty><nodrag /><nodrop />
+                <nodrag /><nodrop />
+                <script>
+                function onInit()
+                    dbn = getDatabaseNode()
+                    if dbn == nil then return end
+                    pdbn = dbn.getParent()
+                    if pdbn == nil then return end
+                    if pdbn.getName() == "CCR" and dbn.getValue() == "" then
+                        dbn.setValue("tokens/Ampersand Transparent.png@DD Dungeon Masters Guide - Players")
+                    end
+                end
+                </script>
 			</tokenfield>
         </sheetdata>
     </windowclass>
