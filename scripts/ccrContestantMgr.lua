@@ -23,7 +23,10 @@ function onInit()
 
     noderef = DB.getChild("CCR",myName.."_noderef")
     if noderef ~= nil then
-        setValue("ccr_contestant",noderef.getValue())
+        refpath = noderef.getValue()
+        if DB.findNode(refpath) ~= nil then
+            setValue("ccr_contestant",refpath)
+        end
     end
 
     CCR.dbg("--ccrContestantMgr:onInit()")
