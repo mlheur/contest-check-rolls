@@ -12,12 +12,11 @@ function onInit()
     tButton["tooltipres"] = "CCR_title"
     tButton["class"]      = "ccr_wndclass"
     tButton["path"]       = "CCR"
-    tButton["icon"]       = "CCR_button_up"
-    tButton["icon_down"]  = "CCR_button_dn"
-    DesktopManager.registerSidebarStackButton(tButton)
+    tButton["sIcon"]       = "CCR_button_up"
+    tButton["sIcon_down"]  = "CCR_button_dn"
+    DesktopManager.registerSidebarToolButton(tButton)
     if User.isHost() then
         ActionsManager.registerResultHandler("CCR",CCR.onRoll) -- if rRoll["sType"] == "CCR" then call ccrThrowMgr.onRoll after throwing dice.
-        Interface.openWindow("ccr_wndclass", "CCR")
         DB.setPublic("CCR",true)
     end
     CCR.dbg("--CCR:onInit()");
